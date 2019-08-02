@@ -55,9 +55,9 @@
             }
           },
           created(){
-            this.id = this.$route.params.id;              // getting the post id that is to edited
-            this.post_title = this.$route.params.title;   // getting the post title that is to edited
-            this.body = this.$route.params.body;          // getting the post body that is to edited
+            this.id = this.$route.params.id;              // getting the post id from v-route params that will be edited
+            this.post_title = this.$route.params.title;   // getting the post title from v-route params that will be edited
+            this.body = this.$route.params.body;          // getting the post body from v-route params that will be edited
 
             this.e_title = this.post_title;           // assigning post title to e_title that is modeled in input type
             this.e_body = this.body;                // assigning post body to e_body that is modeled in input type

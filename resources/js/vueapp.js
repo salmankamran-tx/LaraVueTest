@@ -8,6 +8,7 @@
     import Create from './components/Create'
     import AllPosts from './components/AllPosts'
     import EditPost from './components/EditPost'
+    import LaraVuePost from './components/LaraVuePost'
 
     const router = new VueRouter({
         mode: 'history',
@@ -17,7 +18,8 @@
                 name: 'create',
                 component: Create,
                 props: {
-                  title: "LaraVue SPA Create Posts"
+                  title: "LaraVue SPA Create Posts",
+
                 }
             },
             {
@@ -25,7 +27,7 @@
                 name: 'allposts',
                 component: AllPosts,
                 props: {
-                    title: "LaraVue SPA Posts"
+                    title: "LaraVue SPA My Posts"
                 }
             },
             {
@@ -40,6 +42,15 @@
               path:'/deletePost',
               name: 'deletepost'
             },
+            {
+              path:'/laravueposts',
+              name: 'laravueposts',
+              component: LaraVuePost,
+              props: {
+                title: "LaraVue SPA Posts",
+              }
+            },
+
         ],
     })
     const app = new Vue({

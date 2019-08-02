@@ -9,12 +9,21 @@
 
             <div id="navbarMenuHeroA" class="navbar-menu">
                 <div class="navbar-end">
+            <div class="navbar-item">
+              User:&nbsp;&nbsp;{{username}}<b></b>
+            </div>
             <a class="navbar-item">
-              <router-link :to="{ name: 'create' }" class="nav-link">Create Posts</router-link>
+              <router-link :to="{ name: 'create'}" class="nav-link">Create Posts</router-link>
             </a>
             <a class="navbar-item">
-              <router-link :to="{ name: 'allposts' }" class="nav-link" >All Posts</router-link>
+              <router-link :to="{ name: 'allposts'}" class="nav-link" >Posts</router-link>
             </a>
+            <a class="navbar-item" v-if =" (user_role) != 'admin' ">
+              <router-link :to="{ name: 'laravueposts'}" class="nav-link" >LaraVue Posts</router-link>
+            </a>
+
+            <a class="navbar-item" href="/logout" >Logout</a>
+
 
           </div>
         </div>
@@ -32,7 +41,21 @@
     </template>
 
     <script>
-        export default {}
+        export default {
+
+          props: ['username', 'user_role'],
+
+          data: function(){
+            {
+            return {
+
+            }
+          }
+        },
+          methods: {
+
+          },
+    }
     </script>
 
     <style>

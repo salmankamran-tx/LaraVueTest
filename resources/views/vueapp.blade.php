@@ -13,7 +13,7 @@
        </head>
        <body>
            <div id="app">
-               <app></app>
+               <app username="{{$username}}" user_role="{{$user_role}}"></app>
            </div>
            <script type="text/javascript" src="js/vueapp.js"></script>
        </body>

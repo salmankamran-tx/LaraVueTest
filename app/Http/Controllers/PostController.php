@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +16,17 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderByDesc('id')->get();
+        $user_id = Auth::id();
+        $user_role = User::find($user_id)->role;
+
+        if($user_role == 'admin'){
+          $posts = Post::all();
+        }
+
+        else{
+        $posts = User::find($user_id)->posts;             // getting the posts of user who is currently logged in.
+        //$posts = $posts->orderByDesc('id');
+      }
         return $posts;
     }
 
@@ -36,7 +48,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        //getting the user_id who is currently logged in
+        $user_id = Auth::id();
+
         $posts = new Post();
+        $posts->user_id = $user_id;
         $posts->title = $request->title;
         $posts->body = $request->body;
 
@@ -94,5 +110,13 @@ class PostController extends Controller
     {
       $post = Post::find($id)->delete();
 
+    }
+
+    public function lara_vue_posts(){
+      $posts = Post::all();
+      // $users_id = Post::select('user_id')->where('id' ,'>' ,0)->get();
+      // $usernames = User::find($users_id)->map->only(['name']);
+      //  dd($usernames);
+      return $posts;
     }
 }
